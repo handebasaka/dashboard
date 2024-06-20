@@ -126,7 +126,7 @@ Werkzeug==3.0.3
 wheel==0.41.2
 xlrd==2.0.1
 zipp==3.19.2
-
+gunicorn
 
 
 
