@@ -11,14 +11,8 @@ from sqlalchemy import create_engine
 
 config = dotenv_values('token.env')
 
-username = config['POSTGRES_USER']
-password = config['POSTGRES_PW']
-host = config['POSTGRES_HOST']
-port = config['POSTGRES_PORT']
-db_climate = config['DB_CLIMATE']
-
 # Reading daily data from db
-url = f'postgresql://{username}:{password}@{host}:{port}/{db_climate}'
+url = f'postgresql://{POSTGRES_USER}:{POSTGRES_PW}@{POSTGRES_HOST}:{POSTGRES_PORT}/climate'
 engine = create_engine(url, echo=True)
 
 sql = "SELECT date, city, lat, lon, country, avg_temp_c, max_temp_c, min_temp_c, max_wind_kph FROM mart_forecast_day"
