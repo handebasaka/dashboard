@@ -5,14 +5,21 @@ import dash
 from dash import Dash, html, dcc, dash_table, callback
 import dash_bootstrap_components as dbc
 from dash.dependencies import Input, Output, State
-from dotenv import dotenv_values
+from dotenv import dotenv_values, load_dotenv
 from sqlalchemy import create_engine
+import os
 
+# Environment variables
+load_dotenv(dotenv_path='/Users/hande/Spiced/dashboard/token.env')
 
-config = dotenv_values('token.env')
+username = os.getenv('POSTGRES_USER')
+password = os.getenv('POSTGRES_PW')
+host = os.getenv('POSTGRES_HOST')
+port = os.getenv('POSTGRES_PORT')
+db_climate = os.getenv('DB_CLIMATE')
 
 # Reading daily data from db
-url = f'postgresql://{POSTGRES_USER}:{POSTGRES_PW}@{POSTGRES_HOST}:{POSTGRES_PORT}/climate'
+url = f'postgresql://{username}:{password}@{host}:{port}/{db_climate}'
 engine = create_engine(url, echo=True)
 
 sql = "SELECT date, city, lat, lon, country, avg_temp_c, max_temp_c, min_temp_c, max_wind_kph FROM mart_forecast_day"
