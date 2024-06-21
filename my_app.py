@@ -32,7 +32,7 @@ sql_2 = "SELECT year_and_month, city, country, ROUND(avg_temp_c, 1) AS avg_temp_
 df_month = pd.read_sql(sql_2,con=engine)
 
 # Reading ISO codes
-iso = pd.read_csv('/Users/hande/Spiced/dashboard/data/iso_codes.csv')
+iso = pd.read_csv('iso_codes.csv')
 
 
 # Joining df & iso
